@@ -16,9 +16,11 @@ import {
 	ModalFooter,
 } from '@chakra-ui/react'
 import { Logo } from '../components/Logo'
+import { useDiceStore } from '../stores/diceStore'
 
 export const Home: FunctionComponent = (): ReactElement => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const dice = useDiceStore((state) => state.value)
 	return (
 		<Box>
 			<Logo h="40vmin" pointerEvents="none" />
@@ -34,6 +36,7 @@ export const Home: FunctionComponent = (): ReactElement => {
 					Learn Chakra
 				</Link>
 			</Text>
+			<Text>Dice: {dice}</Text>
 
 			<Tooltip label="This will open a modal" placement="top">
 				<Button onClick={onOpen}>Click this button</Button>
