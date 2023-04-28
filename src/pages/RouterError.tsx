@@ -7,6 +7,7 @@ import { Box, Text, Code } from '@chakra-ui/react'
 // For this reason, we have a catch-all route in src\index.tsx with a <NotFound> component that will be rendered in the <Outlet> of the Root component.
 
 export const RouterError: FunctionComponent = (): ReactElement => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const error: any = useRouteError()
 	console.log(error)
 	return (
