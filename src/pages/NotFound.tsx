@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { Text, Flex, Box, Image } from '@chakra-ui/react'
+import { Text, Flex, Box, Image, Button } from '@chakra-ui/react'
 
 const msgs: string[] = [
 	'Whoops! Looks like we took a wrong turn at Albuquerque.',
@@ -37,9 +37,9 @@ export const NotFound: FunctionComponent = (): ReactElement => {
 					<Text fontSize="8xl" fontWeight="bold">
 						404
 					</Text>
-					<Text>Page not found.</Text>
+					<Text fontWeight="bold">Oops, page not found.</Text>
 					<Text fontStyle="italic">{msg}</Text>
-					<Box paddingTop="3">
+					<Box p="3">
 						<Image
 							shadow="dark-lg"
 							boxSize="15em"
@@ -48,6 +48,9 @@ export const NotFound: FunctionComponent = (): ReactElement => {
 							alt="sad cat 404"
 						/>
 					</Box>
+					<Button as="a" colorScheme="purple" href="/">
+						Go Home
+					</Button>
 				</Flex>
 				<Box />
 			</Flex>
