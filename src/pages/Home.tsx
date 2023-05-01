@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { Text, Flex, Heading, Container, Box } from '@chakra-ui/react'
+import { Flex, Heading, Container, Box } from '@chakra-ui/react'
 
 export const Home: FunctionComponent = (): ReactElement => {
 	return (
