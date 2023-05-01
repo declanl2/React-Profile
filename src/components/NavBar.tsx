@@ -12,6 +12,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher'
 
 export const NavBar: FunctionComponent = (): ReactElement => {
 	const { colorMode } = useColorMode()
+	const githubURL = 'https://github.com/declanl2'
 	return (
 		<Flex
 			alignItems={'center'}
@@ -38,7 +39,7 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 
 			<Flex alignItems={'center'} justifyContent={'space-between'}>
 				<Text mr={5}>Declan Lawson</Text>
-				<Link href="https://github.com/declanl2" isExternal>
+				<Link href={githubURL} isExternal>
 					GitHub <ExternalLinkIcon mx="2px" />
 				</Link>
 				<ColorModeSwitcher justifySelf="flex-end" />
