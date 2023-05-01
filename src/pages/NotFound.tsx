@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactElement } from 'react'
 import { Text, Flex, Box, Image, Button } from '@chakra-ui/react'
+import { Link as ReactRouterLink } from 'react-router-dom'
 
 const msgs: string[] = [
 	'Whoops! Looks like we took a wrong turn at Albuquerque.',
@@ -48,7 +49,7 @@ export const NotFound: FunctionComponent = (): ReactElement => {
 							alt="sad cat 404"
 						/>
 					</Box>
-					<Button as="a" colorScheme="purple" href="/">
+					<Button as={ReactRouterLink} colorScheme="purple" to="/">
 						Go Home
 					</Button>
 				</Flex>
