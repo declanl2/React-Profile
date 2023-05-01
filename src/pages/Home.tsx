@@ -1,67 +1,24 @@
 import { FunctionComponent, ReactElement } from 'react'
-import {
-	Text,
-	Button,
-	Box,
-	Code,
-	Tooltip,
-	Link,
-	useDisclosure,
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalCloseButton,
-	ModalBody,
-	ModalFooter,
-} from '@chakra-ui/react'
-import { Logo } from '../components/Logo'
-import { useDiceStore } from '../stores/diceStore'
+import { Text, Flex, Heading, Container, Box } from '@chakra-ui/react'
 
 export const Home: FunctionComponent = (): ReactElement => {
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const dice = useDiceStore((state) => state.value)
 	return (
-		<Box>
-			<Logo h="40vmin" pointerEvents="none" />
+		<Flex
+			alignItems="center"
+			flexDirection="column"
+			flexGrow="1"
+			border="1px solid red"
+			justifyContent="space-between"
+		>
+			<Box />
+			<Box border="1px solid blue">
+				<Heading size="3xl">Welcome</Heading>
+				<Container border="1px solid blue">
+					Hi, my name is Declan.
+				</Container>
+			</Box>
 
-			<Text my={10}>
-				Edit <Code>src/pages/Home.tsx</Code> and save to reload.{' '}
-				<Link
-					color="teal.500"
-					href="https://chakra-ui.com"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn Chakra
-				</Link>
-			</Text>
-			<Text>Dice: {dice}</Text>
-
-			<Tooltip label="This will open a modal" placement="top">
-				<Button onClick={onOpen}>Click this button</Button>
-			</Tooltip>
-
-			<Modal isOpen={isOpen} onClose={onClose}>
-				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader>Example Modal</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<Text>
-							Here&apos;s a Chakra UI modal. You can close it by
-							clicking &quot;Close&quot;
-						</Text>
-					</ModalBody>
-
-					<ModalFooter>
-						<Button colorScheme="blue" mr={3} onClick={onClose}>
-							Close
-						</Button>
-						<Button variant="ghost">Secondary Action</Button>
-					</ModalFooter>
-				</ModalContent>
-			</Modal>
-		</Box>
+			<Box />
+		</Flex>
 	)
 }
