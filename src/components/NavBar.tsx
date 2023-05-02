@@ -12,7 +12,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher'
 
 export const NavBar: FunctionComponent = (): ReactElement => {
 	const { colorMode } = useColorMode()
-	const githubURL = 'https://github.com/declanl2'
+	const githubURL: string = 'https://github.com/declanl2'
 	return (
 		<Flex
 			alignItems={'center'}

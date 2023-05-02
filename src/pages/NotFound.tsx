@@ -15,7 +15,7 @@ const msgs: string[] = [
 	"The good news: You're not lost. The bad news: The page you were looking for is.",
 ]
 
-function randomMessage() {
+function randomMessage(): string {
 	const min = 0
 	const max: number = msgs.length - 1
 	const randomNum: number = Math.floor(Math.random() * (max - min) + min)
