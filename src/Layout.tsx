@@ -16,7 +16,6 @@ export const Layout: FunctionComponent = (): ReactElement => {
 				<Outlet />
 			</Flex>
 
-			{/* <Footer /> */}
 			<Footer />
 		</Flex>
 	)
