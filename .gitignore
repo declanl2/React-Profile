@@ -20,6 +20,7 @@
 .env*
 
 .eslint*
+.prettier*
 
 npm-debug.log*
 yarn-debug.log*
