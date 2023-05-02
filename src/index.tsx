@@ -11,7 +11,8 @@ import * as serviceWorker from './serviceWorker'
 import { Layout } from './Layout'
 import { RouterError } from './pages/RouterError'
 import { Home } from './pages/Home'
-import { ZustandExample } from './pages/ZustandExample'
+import { About } from './pages/About'
+import { Projects } from './pages/Projects'
 import { NotFound } from './pages/NotFound'
 
 const router: Router = createBrowserRouter([
@@ -25,8 +26,12 @@ const router: Router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: 'zustand-example',
-				element: <ZustandExample />,
+				path: 'about',
+				element: <About />,
+			},
+			{
+				path: 'projects',
+				element: <Projects />,
 			},
 			{
 				path: '*',
