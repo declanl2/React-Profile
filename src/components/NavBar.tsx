@@ -29,6 +29,9 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 				<Link as={ReactRouterLink} to="/" mr={10}>
 					Home
 				</Link>
+				<Link as={ReactRouterLink} to="/about" mr={10}>
+					About
+				</Link>
 				<Link as={ReactRouterLink} to="/zustand-example" mr={10}>
 					Zustand Example
 				</Link>
