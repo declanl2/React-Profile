@@ -1,6 +1,6 @@
 import { ReactElement, FunctionComponent } from 'react'
 import PurpleWave from '../assets/purplewave.svg'
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
 export const Footer: FunctionComponent = (): ReactElement => {
 	const imageURL: string = `url(${PurpleWave})`

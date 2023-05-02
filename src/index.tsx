@@ -12,7 +12,7 @@ import { Layout } from './Layout'
 import { RouterError } from './pages/RouterError'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
-import { ZustandExample } from './pages/ZustandExample'
+import { Projects } from './pages/Projects'
 import { NotFound } from './pages/NotFound'
 
 const router: Router = createBrowserRouter([
@@ -30,8 +30,8 @@ const router: Router = createBrowserRouter([
 				element: <About />,
 			},
 			{
-				path: 'zustand-example',
-				element: <ZustandExample />,
+				path: 'projects',
+				element: <Projects />,
 			},
 			{
 				path: '*',
