@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Flex } from '@chakra-ui/react'
 
 import { NavBar } from './components/NavBar'
+import { Footer } from './components/Footer'
 
 export const Layout: FunctionComponent = (): ReactElement => {
 	return (
@@ -16,6 +17,7 @@ export const Layout: FunctionComponent = (): ReactElement => {
 			</Flex>
 
 			{/* <Footer /> */}
+			<Footer />
 		</Flex>
 	)
 }
