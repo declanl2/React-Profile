@@ -7,15 +7,12 @@ export const Home: FunctionComponent = (): ReactElement => {
 			alignItems="center"
 			flexDirection="column"
 			flexGrow="1"
-			border="1px solid red"
 			justifyContent="space-between"
 		>
 			<Box />
-			<Box border="1px solid blue">
+			<Box>
 				<Heading size="3xl">Welcome</Heading>
-				<Container border="1px solid blue">
-					Hi, my name is Declan.
-				</Container>
+				<Container>Hi, my name is Declan.</Container>
 			</Box>
 
 			<Box />
