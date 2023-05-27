@@ -1,7 +1,7 @@
-import { ReactElement, FunctionComponent } from 'react'
+import { FunctionComponent, ReactElement } from 'react'
 import { Heading, Flex } from '@chakra-ui/react'
 
-export const About: FunctionComponent = (): ReactElement => {
+export const Contact: FunctionComponent = (): ReactElement => {
 	return (
 		<Flex
 			alignItems="center"
@@ -9,7 +9,7 @@ export const About: FunctionComponent = (): ReactElement => {
 			flexGrow="1"
 			justifyContent="space-between"
 		>
-			<Heading>About Me</Heading>
+			<Heading>Contact Me</Heading>
 		</Flex>
 	)
 }
