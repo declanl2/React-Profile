@@ -13,6 +13,7 @@ import { RouterError } from './pages/RouterError'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Projects } from './pages/Projects'
+import { Contact } from './pages/Contact'
 import { NotFound } from './pages/NotFound'
 
 const router: Router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router: Router = createBrowserRouter([
 			{
 				path: 'projects',
 				element: <Projects />,
+			},
+			{
+				path: 'contact',
+				element: <Contact />,
 			},
 			{
 				path: '*',

@@ -35,6 +35,9 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 				<Link as={ReactRouterLink} to="/projects" mr={10}>
 					Projects
 				</Link>
+				<Link as={ReactRouterLink} to="/contact" mr={10}>
+					Contact
+				</Link>
 			</Box>
 
 			<Flex alignItems={'center'} justifyContent={'space-between'}>

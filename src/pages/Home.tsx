@@ -12,7 +12,7 @@ export const Home: FunctionComponent = (): ReactElement => {
 			<Box />
 			<Box>
 				<Heading size="3xl">Welcome</Heading>
-				<Container>Hi, my name is Declan.</Container>
+				<Container>Hi, my name is Declan. &#128075;</Container>
 			</Box>
 
 			<Box />

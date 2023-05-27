@@ -3,9 +3,13 @@ import { Flex, Heading } from '@chakra-ui/react'
 
 export const Projects: FunctionComponent = (): ReactElement => {
 	return (
-		<Flex>
+		<Flex
+			alignItems="center"
+			flexDirection="column"
+			flexGrow="1"
+			justifyContent="space-between"
+		>
 			<Heading>Projects</Heading>
 		</Flex>
 	)
 }
-// test
