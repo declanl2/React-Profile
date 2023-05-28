@@ -1,6 +1,13 @@
 import { ReactElement, FunctionComponent } from 'react'
 import PurpleWave from '../assets/purple-wave-slim.svg'
-import { ListItem, ListIcon, List, Link, Box } from '@chakra-ui/react'
+import {
+	ListItem,
+	ListIcon,
+	List,
+	Link,
+	Box,
+	Container,
+} from '@chakra-ui/react'
 import { EmailIcon } from '@chakra-ui/icons'
 import { AiFillGithub } from 'react-icons/ai'
 
@@ -23,17 +30,22 @@ export const Footer: FunctionComponent = (): ReactElement => {
 				height="200px"
 				position="relative"
 				top="-1px"
+				fontWeight="bold"
 			>
-				<List p="30px">
-					<ListItem>
-						<ListIcon as={EmailIcon} />
-						<Link href={`mailto:${email}`}>{email}</Link>
-					</ListItem>
-					<ListItem>
-						<ListIcon as={AiFillGithub} />
-						<Link href="https://github.com/declanl2">declanl2</Link>
-					</ListItem>
-				</List>
+				<Container>
+					<List p="30px">
+						<ListItem>
+							<ListIcon as={EmailIcon} />
+							<Link href={`mailto:${email}`}>{email}</Link>
+						</ListItem>
+						<ListItem>
+							<ListIcon as={AiFillGithub} />
+							<Link href="https://github.com/declanl2">
+								declanl2
+							</Link>
+						</ListItem>
+					</List>
+				</Container>
 			</Box>
 		</>
 	)
