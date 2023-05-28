@@ -31,6 +31,7 @@ export const Footer: FunctionComponent = (): ReactElement => {
 				position="relative"
 				top="-1px"
 				fontWeight="bold"
+				color="white"
 			>
 				<Container>
 					<List p="30px">
