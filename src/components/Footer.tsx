@@ -15,9 +15,15 @@ export const Footer: FunctionComponent = (): ReactElement => {
 				backgroundRepeat="no-repeat"
 				backgroundPosition="bottom"
 				width="100%"
-				height="540px"
+				height="300px"
 			></Box>
-			<Box backgroundColor="#6e24c7" width="100%" height="200px">
+			<Box
+				backgroundColor="#6e24c7"
+				width="100%"
+				height="200px"
+				position="relative"
+				top="-1px"
+			>
 				<List p="30px">
 					<ListItem>
 						<ListIcon as={EmailIcon} />
