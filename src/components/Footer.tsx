@@ -7,6 +7,8 @@ import {
 	Link,
 	Box,
 	Container,
+	Text,
+	Heading,
 } from '@chakra-ui/react'
 import { EmailIcon } from '@chakra-ui/icons'
 import { AiFillGithub } from 'react-icons/ai'
@@ -34,6 +36,10 @@ export const Footer: FunctionComponent = (): ReactElement => {
 				color="white"
 			>
 				<Container>
+					<Heading textAlign="center" size="lg">
+						Declan Lawson
+					</Heading>
+					<Text></Text>
 					<List p="30px">
 						<ListItem>
 							<ListIcon as={EmailIcon} />
