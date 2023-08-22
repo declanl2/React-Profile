@@ -12,7 +12,7 @@ export const Layout: FunctionComponent = (): ReactElement => {
 			{/* An <Outlet> renders whatever child route is currently active,
 			so you can think about this as a placeholder for the child routes
 			we defined in index.tsx */}
-			<Flex p={8} flexDirection="column" flexGrow="1">
+			<Flex p={8} flexDirection="column" flexGrow="1" minH="100vh">
 				<Outlet />
 			</Flex>
 
