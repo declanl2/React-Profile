@@ -3,7 +3,9 @@ import { Box, Flex, Text, Link, useColorMode } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons' // Import HamburgerIcon
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
+
 import { HamburgerMenu } from './HamburgerMenu'
+import { NavBarItem, NavBarItems } from '../data/NavBarItems'
 
 export const NavBar: FunctionComponent = (): ReactElement => {
 	const { colorMode } = useColorMode()
@@ -21,22 +23,20 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 			py={1}
 			fontSize={'sm'}
 		>
-			<HamburgerMenu />
+			<HamburgerMenu navBarItems={NavBarItems} />
 
 			<Box display={{ base: 'none', md: 'block' }}>
 				{' '}
-				<Link as={ReactRouterLink} to="/" mr={10}>
-					Home
-				</Link>
-				<Link as={ReactRouterLink} to="/about" mr={10}>
-					About
-				</Link>
-				<Link as={ReactRouterLink} to="/projects" mr={10}>
-					Projects
-				</Link>
-				<Link as={ReactRouterLink} to="/contact" mr={10}>
-					Contact
-				</Link>
+				{NavBarItems.map((item: NavBarItem) => (
+					<Link
+						as={ReactRouterLink}
+						to={item.to}
+						mr={10}
+						key={item.name}
+					>
+						{item.name}
+					</Link>
+				))}
 			</Box>
 
 			<Flex alignItems={'center'} justifyContent={'space-between'}>

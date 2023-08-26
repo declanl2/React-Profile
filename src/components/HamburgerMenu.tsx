@@ -14,7 +14,15 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react'
 
-export const HamburgerMenu: FunctionComponent = (): ReactElement => {
+import { NavBarItem } from '../data/NavBarItems'
+
+interface HamburgerMenuProps {
+	navBarItems: NavBarItem[]
+}
+
+export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
+	navBarItems,
+}): ReactElement => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	return (
@@ -38,38 +46,17 @@ export const HamburgerMenu: FunctionComponent = (): ReactElement => {
 					<DrawerHeader>Menu</DrawerHeader>
 					<DrawerBody>
 						<Box>
-							<Link
-								as={ReactRouterLink}
-								to="/"
-								mb={2}
-								onClick={onClose}
-							>
-								Home
-							</Link>
-							<Link
-								as={ReactRouterLink}
-								to="/about"
-								mb={2}
-								onClick={onClose}
-							>
-								About
-							</Link>
-							<Link
-								as={ReactRouterLink}
-								to="/projects"
-								mb={2}
-								onClick={onClose}
-							>
-								Projects
-							</Link>
-							<Link
-								as={ReactRouterLink}
-								to="/contact"
-								mb={2}
-								onClick={onClose}
-							>
-								Contact
-							</Link>
+							{navBarItems.map((item: NavBarItem) => (
+								<Link
+									as={ReactRouterLink}
+									to={item.to}
+									mb={2}
+									key={item.name}
+									onClick={onClose}
+								>
+									{item.name}
+								</Link>
+							))}
 						</Box>
 					</DrawerBody>
 				</DrawerContent>
