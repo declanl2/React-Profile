@@ -2,7 +2,7 @@ import { FunctionComponent, ReactElement } from 'react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import {
-	Box,
+	Flex,
 	Link,
 	Drawer,
 	DrawerOverlay,
@@ -12,6 +12,7 @@ import {
 	DrawerBody,
 	IconButton,
 	useDisclosure,
+	useColorMode,
 } from '@chakra-ui/react'
 
 import { NavBarItem } from '../data/NavBarItems'
@@ -24,7 +25,7 @@ export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
 	navBarItems,
 }): ReactElement => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-
+	const { colorMode } = useColorMode()
 	return (
 		<>
 			<IconButton
@@ -36,7 +37,7 @@ export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
 			/>
 			<Drawer
 				isOpen={isOpen}
-				placement="right"
+				placement="left"
 				onClose={onClose}
 				size="xs"
 			>
@@ -45,7 +46,13 @@ export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
 					<DrawerCloseButton />
 					<DrawerHeader>Menu</DrawerHeader>
 					<DrawerBody>
-						<Box>
+						<Flex
+							justifyContent={'space-between'}
+							direction={'column'}
+							shadow={'sm'}
+							px={10}
+							py={1}
+						>
 							{navBarItems.map((item: NavBarItem) => (
 								<Link
 									as={ReactRouterLink}
@@ -57,7 +64,7 @@ export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
 									{item.name}
 								</Link>
 							))}
-						</Box>
+						</Flex>
 					</DrawerBody>
 				</DrawerContent>
 			</Drawer>
