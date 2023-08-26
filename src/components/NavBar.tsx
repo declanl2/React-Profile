@@ -1,18 +1,16 @@
 import { FunctionComponent, ReactElement } from 'react'
-
-import { Link as ReactRouterLink } from 'react-router-dom'
 import { Box, Flex, Text, Link, useColorMode } from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
-// We need to use Chakra UI's <Link> component for consistency with the rest of the UI.
-// But we need to use React Router's <Link> component for the routing to work properly.
-// So we import Chakra UI's <Link> component, and then import React Router's <Link> component as ReactRouterLink.
-// We can then pass the "as" prop to Chakra UI's <Link> component. See: https://chakra-ui.com/docs/components/link/usage#usage-with-routing-library
-
+import { ExternalLinkIcon } from '@chakra-ui/icons' // Import HamburgerIcon
+import { Link as ReactRouterLink } from 'react-router-dom'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
+
+import { HamburgerMenu } from './HamburgerMenu'
+import { NavBarItem, NavBarItems } from '../data/NavBarItems'
 
 export const NavBar: FunctionComponent = (): ReactElement => {
 	const { colorMode } = useColorMode()
 	const githubURL: string = 'https://github.com/declanl2'
+
 	return (
 		<Flex
 			alignItems={'center'}
@@ -25,19 +23,20 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 			py={1}
 			fontSize={'sm'}
 		>
-			<Box>
-				<Link as={ReactRouterLink} to="/" mr={10}>
-					Home
-				</Link>
-				<Link as={ReactRouterLink} to="/about" mr={10}>
-					About
-				</Link>
-				<Link as={ReactRouterLink} to="/projects" mr={10}>
-					Projects
-				</Link>
-				<Link as={ReactRouterLink} to="/contact" mr={10}>
-					Contact
-				</Link>
+			<HamburgerMenu navBarItems={NavBarItems} />
+
+			<Box display={{ base: 'none', md: 'block' }}>
+				{' '}
+				{NavBarItems.map((item: NavBarItem) => (
+					<Link
+						as={ReactRouterLink}
+						to={item.to}
+						mr={10}
+						key={item.name}
+					>
+						{item.name}
+					</Link>
+				))}
 			</Box>
 
 			<Flex alignItems={'center'} justifyContent={'space-between'}>
