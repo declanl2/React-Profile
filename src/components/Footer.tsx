@@ -36,8 +36,8 @@ export const Footer: FunctionComponent = (): ReactElement => {
 				color="white"
 			>
 				<Container>
-					<Heading textAlign="center" size="lg">
-						Declan Lawson
+					<Heading textAlign="center" size={'lg'}>
+						Declan Lawson&apos;s React Profile
 					</Heading>
 					<Text></Text>
 					<List p="30px">

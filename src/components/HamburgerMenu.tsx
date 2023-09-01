@@ -12,7 +12,6 @@ import {
 	DrawerBody,
 	IconButton,
 	useDisclosure,
-	useColorMode,
 } from '@chakra-ui/react'
 
 import { NavBarItem } from '../data/NavBarItems'
@@ -25,7 +24,6 @@ export const HamburgerMenu: FunctionComponent<HamburgerMenuProps> = ({
 	navBarItems,
 }): ReactElement => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const { colorMode } = useColorMode()
 	return (
 		<>
 			<IconButton

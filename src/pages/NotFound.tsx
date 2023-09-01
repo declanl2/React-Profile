@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { Text, Flex, Box, Image, Button } from '@chakra-ui/react'
+import { Text, Flex, Box, Image, Button, useColorMode } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
 const msgs: string[] = [
@@ -24,7 +24,7 @@ function randomMessage(): string {
 
 export const NotFound: FunctionComponent = (): ReactElement => {
 	const msg: string = randomMessage()
-
+	const { colorMode } = useColorMode()
 	return (
 		<>
 			<Flex
@@ -49,7 +49,12 @@ export const NotFound: FunctionComponent = (): ReactElement => {
 							alt="sad cat 404"
 						/>
 					</Box>
-					<Button as={ReactRouterLink} colorScheme="purple" to="/">
+					<Button
+						as={ReactRouterLink}
+						colorScheme="purple"
+						textColor={colorMode === 'light' ? 'white' : 'black'}
+						to="/"
+					>
 						Go Home
 					</Button>
 				</Flex>
