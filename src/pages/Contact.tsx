@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { Heading, Flex } from '@chakra-ui/react'
+import { Heading, Flex, Box } from '@chakra-ui/react'
+import { ContactForm } from '../components/ContactForm'
 
 export const Contact: FunctionComponent = (): ReactElement => {
 	return (
@@ -10,6 +11,8 @@ export const Contact: FunctionComponent = (): ReactElement => {
 			justifyContent="space-between"
 		>
 			<Heading>Contact Me</Heading>
+			<ContactForm />
+			<Box />
 		</Flex>
 	)
 }
