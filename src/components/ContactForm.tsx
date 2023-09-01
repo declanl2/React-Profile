@@ -8,11 +8,11 @@ import {
 	useColorModeValue,
 	Box,
 } from '@chakra-ui/react'
+import { EmailIcon } from '@chakra-ui/icons'
 import { FunctionComponent, ReactElement } from 'react'
 import { Formik, Form, Field } from 'formik'
 
 export const ContactForm: FunctionComponent = (): ReactElement => {
-	const buttonColor = useColorModeValue('white', 'black')
 	const backgroundColor = useColorModeValue('gray.100', 'gray.700')
 	function validateName(value) {
 		let error
@@ -111,10 +111,10 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 					<Button
 						type="submit"
 						colorScheme="purple"
-						color={buttonColor}
+						leftIcon={<EmailIcon />}
 						mt={4}
 					>
-						Submit
+						Send
 					</Button>
 				</Form>
 			</Formik>
