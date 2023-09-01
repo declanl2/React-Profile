@@ -3,15 +3,17 @@ import {
 	FormLabel,
 	FormErrorMessage,
 	Input,
+	Textarea,
 	Button,
-	useColorMode,
+	useColorModeValue,
+	Box,
 } from '@chakra-ui/react'
 import { FunctionComponent, ReactElement } from 'react'
 import { Formik, Form, Field } from 'formik'
 
 export const ContactForm: FunctionComponent = (): ReactElement => {
-	const { colorMode } = useColorMode()
-
+	const buttonColor = useColorModeValue('white', 'black')
+	const backgroundColor = useColorModeValue('gray.100', 'gray.700')
 	function validateName(value) {
 		let error
 		if (!value) {
@@ -21,35 +23,101 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 	}
 
 	return (
-		<Formik
-			initialValues={{ firstName: '', lastName: '', email: '' }}
-			onSubmit={async (values) => {
-				await new Promise((r) => setTimeout(r, 500))
-				alert(JSON.stringify(values, null, 2))
-			}}
+		// Background color to be the inverted color of light/dark mode
+		<Box
+			backgroundColor={backgroundColor}
+			minW={{ base: '90vw', md: '50vw', lg: '30vw' }}
+			mx={'auto'}
+			p={5}
+			rounded={'lg'}
+			boxShadow={'md'}
 		>
-			<Form>
-				<Field name="name" validate={validateName}>
-					{({ field, form }) => (
-						<FormControl
-							isInvalid={form.errors.name && form.touched.name}
-						>
-							<FormLabel>First name</FormLabel>
-							<Input {...field} placeholder="name" />
-							<FormErrorMessage>
-								{form.errors.name}
-							</FormErrorMessage>
-						</FormControl>
-					)}
-				</Field>
-				<Button
-					type="submit"
-					colorScheme="purple"
-					color={colorMode === 'light' ? 'white' : 'black'}
-				>
-					Submit
-				</Button>
-			</Form>
-		</Formik>
+			<Formik
+				initialValues={{ firstName: '', lastName: '', email: '' }}
+				onSubmit={async (values) => {
+					await new Promise((r) => setTimeout(r, 500))
+					alert(JSON.stringify(values, null, 2))
+				}}
+			>
+				<Form>
+					<Field name="firstName" validate={validateName}>
+						{({ field, form }) => (
+							<FormControl
+								isInvalid={
+									form.errors.firstName &&
+									form.touched.firstName
+								}
+							>
+								<FormLabel>First Name</FormLabel>
+								<Input {...field} placeholder="First Name" />
+								<FormErrorMessage>
+									{form.errors.firstName}
+								</FormErrorMessage>
+							</FormControl>
+						)}
+					</Field>
+					<Field name="lastName" validate={validateName}>
+						{({ field, form }) => (
+							<FormControl
+								isInvalid={
+									form.errors.lastName &&
+									form.touched.lastName
+								}
+							>
+								<FormLabel>Last Name</FormLabel>
+								<Input {...field} placeholder="Last Name" />
+								<FormErrorMessage>
+									{form.errors.lastName}
+								</FormErrorMessage>
+							</FormControl>
+						)}
+					</Field>
+					<Field name="email" validate={validateName}>
+						{({ field, form }) => (
+							<FormControl
+								isInvalid={
+									form.errors.email && form.touched.email
+								}
+							>
+								<FormLabel>Email</FormLabel>
+								<Input {...field} placeholder="Email" />
+								<FormErrorMessage>
+									{form.errors.email}
+								</FormErrorMessage>
+							</FormControl>
+						)}
+					</Field>
+					<Field name="message" validate={validateName}>
+						{({ field, form }) => (
+							<FormControl
+								isInvalid={
+									form.errors.message && form.touched.message
+								}
+							>
+								<FormLabel>Message</FormLabel>
+								<Textarea
+									{...field}
+									placeholder="Message"
+									size="md"
+									resize="vertical"
+									minH="100px"
+								/>
+								<FormErrorMessage>
+									{form.errors.message}
+								</FormErrorMessage>
+							</FormControl>
+						)}
+					</Field>
+					<Button
+						type="submit"
+						colorScheme="purple"
+						color={buttonColor}
+						mt={4}
+					>
+						Submit
+					</Button>
+				</Form>
+			</Formik>
+		</Box>
 	)
 }
