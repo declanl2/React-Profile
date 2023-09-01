@@ -23,7 +23,6 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 	}
 
 	return (
-		// Background color to be the inverted color of light/dark mode
 		<Box
 			backgroundColor={backgroundColor}
 			minW={{ base: '90vw', md: '50vw', lg: '30vw' }}
