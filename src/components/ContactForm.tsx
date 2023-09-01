@@ -14,10 +14,38 @@ import { Formik, Form, Field } from 'formik'
 
 export const ContactForm: FunctionComponent = (): ReactElement => {
 	const backgroundColor = useColorModeValue('gray.100', 'gray.700')
-	function validateName(value) {
+
+	// Validation function for each field
+	const validateFirstName = (value) => {
 		let error
 		if (!value) {
-			error = 'Name is required'
+			error = 'First Name is required'
+		}
+		return error
+	}
+
+	const validateLastName = (value) => {
+		let error
+		if (!value) {
+			error = 'Last Name is required'
+		}
+		return error
+	}
+
+	const validateEmail = (value) => {
+		let error
+		if (!value) {
+			error = 'Email is required'
+		} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+			error = 'Invalid email address'
+		}
+		return error
+	}
+
+	const validateMessage = (value) => {
+		let error
+		if (!value) {
+			error = 'Message is required'
 		}
 		return error
 	}
@@ -32,14 +60,19 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 			boxShadow={'md'}
 		>
 			<Formik
-				initialValues={{ firstName: '', lastName: '', email: '' }}
+				initialValues={{
+					firstName: '',
+					lastName: '',
+					email: '',
+					message: '',
+				}}
 				onSubmit={async (values) => {
 					await new Promise((r) => setTimeout(r, 500))
 					alert(JSON.stringify(values, null, 2))
 				}}
 			>
 				<Form>
-					<Field name="firstName" validate={validateName}>
+					<Field name="firstName" validate={validateFirstName}>
 						{({ field, form }) => (
 							<FormControl
 								isInvalid={
@@ -55,7 +88,7 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 							</FormControl>
 						)}
 					</Field>
-					<Field name="lastName" validate={validateName}>
+					<Field name="lastName" validate={validateLastName}>
 						{({ field, form }) => (
 							<FormControl
 								isInvalid={
@@ -71,7 +104,7 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 							</FormControl>
 						)}
 					</Field>
-					<Field name="email" validate={validateName}>
+					<Field name="email" validate={validateEmail}>
 						{({ field, form }) => (
 							<FormControl
 								isInvalid={
@@ -86,7 +119,7 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 							</FormControl>
 						)}
 					</Field>
-					<Field name="message" validate={validateName}>
+					<Field name="message" validate={validateMessage}>
 						{({ field, form }) => (
 							<FormControl
 								isInvalid={
