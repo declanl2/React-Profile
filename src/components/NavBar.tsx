@@ -19,12 +19,11 @@ export const NavBar: FunctionComponent = (): ReactElement => {
 			borderStyle={'solid'}
 			borderColor={colorMode === 'light' ? 'gray.100' : 'gray.900'}
 			shadow={'sm'}
-			px={10}
+			px={{ base: 3, md: 10 }}
 			py={1}
 			fontSize={'sm'}
 		>
 			<HamburgerMenu navBarItems={NavBarItems} />
-
 			<Box display={{ base: 'none', md: 'block' }}>
 				{' '}
 				{NavBarItems.map((item: NavBarItem) => (
