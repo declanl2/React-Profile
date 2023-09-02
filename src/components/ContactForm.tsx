@@ -15,6 +15,19 @@ import { Formik, Form, Field } from 'formik'
 export const ContactForm: FunctionComponent = (): ReactElement => {
 	const backgroundColor = useColorModeValue('gray.100', 'gray.700')
 
+	const generateMailtoLink = (values) => {
+		const { message } = values
+
+		// Encode values to ensure proper formatting in the mailto link
+
+		const encodedMessage = encodeURIComponent(message)
+
+		// Generate the mailto link with subject and body
+		const mailtoLink = `mailto:hi@declanlawson.dev?subject=Contact Form Submission&body=${encodedMessage}`
+
+		return mailtoLink
+	}
+
 	// Validation function for each field
 	const validateFirstName = (value) => {
 		let error
@@ -67,8 +80,8 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 					message: '',
 				}}
 				onSubmit={async (values) => {
-					await new Promise((r) => setTimeout(r, 500))
-					alert(JSON.stringify(values, null, 2))
+					const mailtoLink = generateMailtoLink(values)
+					window.location.href = mailtoLink
 				}}
 			>
 				<Form>
