@@ -5,16 +5,12 @@ import {
 	Input,
 	Textarea,
 	Button,
-	useColorModeValue,
-	Box,
 } from '@chakra-ui/react'
 import { EmailIcon } from '@chakra-ui/icons'
 import { FunctionComponent, ReactElement } from 'react'
 import { Formik, Form, Field } from 'formik'
 
 export const ContactForm: FunctionComponent = (): ReactElement => {
-	const backgroundColor = useColorModeValue('gray.100', 'gray.700')
-
 	const generateMailtoLink = (values) => {
 		const { message } = values
 
@@ -64,105 +60,92 @@ export const ContactForm: FunctionComponent = (): ReactElement => {
 	}
 
 	return (
-		<Box
-			backgroundColor={backgroundColor}
-			minW={{ base: '90vw', md: '50vw', lg: '30vw' }}
-			mx={'auto'}
-			p={5}
-			rounded={'lg'}
-			boxShadow={'md'}
+		<Formik
+			initialValues={{
+				firstName: '',
+				lastName: '',
+				email: '',
+				message: '',
+			}}
+			onSubmit={async (values) => {
+				const mailtoLink = generateMailtoLink(values)
+				window.location.href = mailtoLink
+			}}
 		>
-			<Formik
-				initialValues={{
-					firstName: '',
-					lastName: '',
-					email: '',
-					message: '',
-				}}
-				onSubmit={async (values) => {
-					const mailtoLink = generateMailtoLink(values)
-					window.location.href = mailtoLink
-				}}
-			>
-				<Form>
-					<Field name="firstName" validate={validateFirstName}>
-						{({ field, form }) => (
-							<FormControl
-								isInvalid={
-									form.errors.firstName &&
-									form.touched.firstName
-								}
-							>
-								<FormLabel>First Name</FormLabel>
-								<Input {...field} placeholder="First Name" />
-								<FormErrorMessage>
-									{form.errors.firstName}
-								</FormErrorMessage>
-							</FormControl>
-						)}
-					</Field>
-					<Field name="lastName" validate={validateLastName}>
-						{({ field, form }) => (
-							<FormControl
-								isInvalid={
-									form.errors.lastName &&
-									form.touched.lastName
-								}
-							>
-								<FormLabel>Last Name</FormLabel>
-								<Input {...field} placeholder="Last Name" />
-								<FormErrorMessage>
-									{form.errors.lastName}
-								</FormErrorMessage>
-							</FormControl>
-						)}
-					</Field>
-					<Field name="email" validate={validateEmail}>
-						{({ field, form }) => (
-							<FormControl
-								isInvalid={
-									form.errors.email && form.touched.email
-								}
-							>
-								<FormLabel>Email</FormLabel>
-								<Input {...field} placeholder="Email" />
-								<FormErrorMessage>
-									{form.errors.email}
-								</FormErrorMessage>
-							</FormControl>
-						)}
-					</Field>
-					<Field name="message" validate={validateMessage}>
-						{({ field, form }) => (
-							<FormControl
-								isInvalid={
-									form.errors.message && form.touched.message
-								}
-							>
-								<FormLabel>Message</FormLabel>
-								<Textarea
-									{...field}
-									placeholder="Message"
-									size="md"
-									resize="vertical"
-									minH="100px"
-								/>
-								<FormErrorMessage>
-									{form.errors.message}
-								</FormErrorMessage>
-							</FormControl>
-						)}
-					</Field>
-					<Button
-						type="submit"
-						colorScheme="purple"
-						leftIcon={<EmailIcon />}
-						mt={4}
-					>
-						Send
-					</Button>
-				</Form>
-			</Formik>
-		</Box>
+			<Form>
+				<Field name="firstName" validate={validateFirstName}>
+					{({ field, form }) => (
+						<FormControl
+							isInvalid={
+								form.errors.firstName && form.touched.firstName
+							}
+						>
+							<FormLabel>First Name</FormLabel>
+							<Input {...field} placeholder="First Name" />
+							<FormErrorMessage>
+								{form.errors.firstName}
+							</FormErrorMessage>
+						</FormControl>
+					)}
+				</Field>
+				<Field name="lastName" validate={validateLastName}>
+					{({ field, form }) => (
+						<FormControl
+							isInvalid={
+								form.errors.lastName && form.touched.lastName
+							}
+						>
+							<FormLabel>Last Name</FormLabel>
+							<Input {...field} placeholder="Last Name" />
+							<FormErrorMessage>
+								{form.errors.lastName}
+							</FormErrorMessage>
+						</FormControl>
+					)}
+				</Field>
+				<Field name="email" validate={validateEmail}>
+					{({ field, form }) => (
+						<FormControl
+							isInvalid={form.errors.email && form.touched.email}
+						>
+							<FormLabel>Email</FormLabel>
+							<Input {...field} placeholder="Email" />
+							<FormErrorMessage>
+								{form.errors.email}
+							</FormErrorMessage>
+						</FormControl>
+					)}
+				</Field>
+				<Field name="message" validate={validateMessage}>
+					{({ field, form }) => (
+						<FormControl
+							isInvalid={
+								form.errors.message && form.touched.message
+							}
+						>
+							<FormLabel>Message</FormLabel>
+							<Textarea
+								{...field}
+								placeholder="Message"
+								size="md"
+								resize="vertical"
+								minH="100px"
+							/>
+							<FormErrorMessage>
+								{form.errors.message}
+							</FormErrorMessage>
+						</FormControl>
+					)}
+				</Field>
+				<Button
+					type="submit"
+					colorScheme="purple"
+					leftIcon={<EmailIcon />}
+					mt={4}
+				>
+					Send
+				</Button>
+			</Form>
+		</Formik>
 	)
 }
